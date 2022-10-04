@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
-exports.authenticate = (req, res, next) => {
+const authenticate = (req, res, next) => {
   try {
     const token = req.header("authorization");
 
@@ -22,3 +22,7 @@ exports.authenticate = (req, res, next) => {
       .json({ success: false, message: "not able to authorize! login again" });
   }
 };
+
+module.exports =  {
+    authenticate
+}
