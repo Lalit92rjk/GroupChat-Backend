@@ -28,7 +28,7 @@ app.use(signlogin);
 
 
 sequelize
-// .sync({ force: true })
+//.sync({ force: true })
 .sync()
 .then(() => {
     app.listen(3000);
