@@ -30,7 +30,6 @@ const getUsers = (req,res) => {
 };
 
 
-
 module.exports =  {
     postMessage,
     getUsers

@@ -6,7 +6,6 @@ const chatController = require("../controllers/message");
 
 const aut = require('../middleware/authentication');
 
-
 router.post('/chatmessage', aut.authenticate, chatController.postMessage);
 
 router.get('/user',aut.authenticate, chatController.getUsers);
