@@ -19,6 +19,18 @@ const postMessage = async(req,res) => {
     })
 };
 
+const getMessage = async(req, res) => {
+    console.log(req.body);
+  
+    Message.findAll()
+      .then((result) => {
+        res.json({ result, suc: true });
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  };
+  
 
 const getUsers = (req,res) => {
     User.findAll({where:{id:req.user.id}}).then(result=>{
@@ -32,6 +44,7 @@ const getUsers = (req,res) => {
 
 module.exports =  {
     postMessage,
-    getUsers
+    getUsers,
+    getMessage
 
 }
