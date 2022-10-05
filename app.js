@@ -8,12 +8,15 @@ const bodyParser = require('body-parser');
 //database and models..
 const sequelize = require('./util/database');
 const User=require('./models/user');
+const Message=require('./models/messages');
+
 
 
 const cors = require('cors')
 
 //routes.........
 const signlogin=require('./routes/loginsignup');
+const messageroute=require('./routes/message');
 
 
 const app = express();
@@ -25,7 +28,10 @@ app.use(cors());
 
 
 app.use(signlogin);
+app.use(messageroute);
 
+User.hasMany(Message);
+Message.belongsTo(User);
 
 sequelize
 //.sync({ force: true })
