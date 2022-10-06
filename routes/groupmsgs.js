@@ -14,7 +14,7 @@ router.get('/getgrpmsgs/:id', aut.authenticate, groupMessageController.getGroupM
 
 router.post("/removepart/:id", aut.authenticate, groupMessageController.postRemove);
 
-
+router.post("/makeuseradmin/:id", aut.authenticate, groupMessageController.postUserAdmin);
 
 
 

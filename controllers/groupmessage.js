@@ -70,11 +70,34 @@ const postRemove = async (req, res) => {
     }
 };
 
-
+const postUserAdmin = async (req, res) => {
+    let gid = req.params.id;
+    let useridid = req.user.id;
+    let { useridupdate } = req.body;
+  
+    let checkad = await Usergroup.findOne({
+      where: { groupId: gid, userId: useridid },
+    });
+  
+    if (checkad.admin == true) {
+      Usergroup.update(
+        { admin: true },
+        { where: { userId: useridupdate, groupId: gid } }
+      )
+        .then((result) => {
+          res.json("user made as group admin");
+        })
+        .catch((err) => {
+          res.json("something went wrong");
+        });
+    } else {
+      res.json("you are not admin !ask admin to make you admin");
+    }
+};
 
 module.exports  = {
   postGroupMessage,
   getGroupMessage,
   postRemove ,
-  
+  postUserAdmin
 }
